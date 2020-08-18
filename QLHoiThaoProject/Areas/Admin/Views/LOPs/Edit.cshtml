@@ -1,0 +1,49 @@
+﻿@model QLHoiThaoProject.Models.EFModel.LOP
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Quản lý Lớp
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Cập nhật thông tin lớp</li>
+    </ol>
+</div><!--/.row-->
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IDLOP)
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Tên ngành</div>
+            <div class="col-md-10">
+                @Html.DropDownList("IDNGANH", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDNGANH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Tên lớp</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TENLOP, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TENLOP, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button class="btn" type="submit">@Html.ActionLink("Hủy", "Index","LOPs")</button>
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,123 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.PagedList<QLHoiThaoProject.Models.EFModel.VONGDAU>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Quản lý Vòng đấu
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Danh sách vòng đấu</li>
+    </ol>
+</div><!--/.row-->
+<div class="row">
+    <div class="col-lg-6"></div>
+    <div class="col-lg-1 btn">Tìm kiếm:</div>
+    <div class="col-lg-5">
+        @*<form role="search">*@
+        @*<div class="form-group">*@
+        <input type="text" class="form-control" id="SeachName" placeholder="Nhập tên vòng đấu cần tìm" />
+        @*<button class="btn btn-default" id="btnSearch" type="submit">Search</button>*@
+        @*</div>*@
+
+
+    </div>
+
+</div>
+<p>
+    <button class="btn btn-default" type="submit">@Html.ActionLink("Thêm mới vòng đấu", "Create")</button>
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Tên hội thao
+        </th>
+        <th>
+            Tên môn thi đấu
+        </th>
+        <th>
+            Tên vòng đấu
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HOITHAO.TENHT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MONTHIDAU.TENMTD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENVONGDAU)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.IDVONGDAU }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.IDVONGDAU }) |
+                <a href="#" class="RemoveLink" data-id="@item.IDVONGDAU" data-username="@item.TENVONGDAU">Xóa</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="row">
+    <div class="col-lg-3">
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+    </div>
+    <div class="col-lg-3"></div>
+    <div class="col-lg-3"></div>
+    <div class="col-lg-3">Hiển thị @Model.Count/@ViewBag.Count bảng</div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-3"></div>
+    <div class="col-lg-3"></div>
+    <div class="col-lg-3">
+        <div>
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+        $(function () {
+            $('.RemoveLink').click(function () {
+                var x = $(this).attr("data-id");
+                var name = $(this).attr("data-username");
+                if (confirm("Bạn có chắc xóa bảng đấu " + name + "?")) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Delete", "VONGDAUs")',
+                        data: { id: x },
+                        success: function () {
+                            alert("Xóa thành công!");
+                            window.location.reload();
+                        },
+                    });
+                }
+            })
+
+            $('#SeachName').keypress(function (event) {
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                if (keycode == '13') {
+                    var Name = $('#SeachName').val();
+                    var url = '@Url.Action("Search", "VONGDAUs", new { Name = "_Name" })'
+                    var link = url.replace("_Name", Name);
+                    location.href = link;
+                }
+            });
+        })
+</script>
+
+
+
+

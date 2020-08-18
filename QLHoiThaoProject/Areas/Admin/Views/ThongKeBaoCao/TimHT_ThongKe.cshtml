@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "TimHT_ThongKe";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section IndexAdmin{
+    Thống kê - Báo cáo
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Danh sách hội thao</li>
+    </ol>
+</div><!--/.row-->
+
+<div>
+
+    <table class="table table-hover">
+        <tr>
+            <th hidden>
+                Mã hội thao
+            </th>
+            <th>
+                Tên hội thao
+            </th>
+
+            <th></th>
+        </tr>
+        @foreach (var item in ViewBag.IDHT)
+        {
+            <tr>
+                <td hidden>
+                    @item.IDHT
+                </td>
+                <td>
+                    @item.TENHT
+                </td>
+                <td>
+                    @Html.ActionLink("DS lớp được nhiều giải", "DanhSachLopDuocGiai", new { id = item.IDHT })<br />
+                    @Html.ActionLink("DS Ngành được nhiều giải", "DanhSachNganhDuocGiai", new { id = item.IDHT })<br />
+                    @Html.ActionLink("DS môn thi đấu được đăng ký nhiều", "DanhSachDangKiMonThiDau", new { id = item.IDHT })<br />
+                    @Html.ActionLink("DS thành viên đội theo lớp", "DanhSachThanhVienDoiTheoLop", new { id = item.IDHT })<br />
+                    @Html.ActionLink("DS kinh phí hỗ trợ", "DanhSachKinhPhiHoTroTheoMon", new { id = item.IDHT })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

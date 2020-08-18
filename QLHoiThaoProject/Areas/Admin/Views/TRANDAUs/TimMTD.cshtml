@@ -1,0 +1,41 @@
+﻿@model QLHoiThaoProject.Models.EFModel.TRANDAU
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Tạo trận đấu cho <strong>@ViewData["TenHT"]</strong>
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-2 pull-left">Môn thi đấu:</div>
+        <div class="col-md-4">@Html.DropDownList("IDMTD", (SelectList)ViewBag.IDMTD, htmlAttributes: new { @class = "form-control" })</div>
+        <div class="col-md-4 pull-left"><input type="submit" value="Tìm" class="btn btn-default" /></div>
+    </div>
+}
+<hr />
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Danh sách vòng đấu</li>
+    </ol>
+</div><!--/.row-->
+
+<table class="table table-hover">
+    <tr>
+        <th>Vòng đấu</th>
+        <th>Tạo trận đấu</th>
+    </tr>
+@foreach (var item in ViewBag.VONGDAU)
+{
+    <tr>
+        <td>@item.TENVONGDAU </td>
+        <td>@Html.ActionLink("Sắp trận", "Create", new { id = item.IDVONGDAU })</td>
+    </tr>
+}
+</table>

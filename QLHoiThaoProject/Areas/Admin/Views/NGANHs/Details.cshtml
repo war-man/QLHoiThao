@@ -1,0 +1,46 @@
+﻿@model QLHoiThaoProject.Models.EFModel.NGANH
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Quản lý Ngành
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Thông tin ngành</li>
+    </ol>
+</div><!--/.row-->
+
+<div>
+    
+
+    <dl class="dl-horizontal">
+        <dt>
+            Mã ngành
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDNGANH)
+        </dd>
+        <dt>
+            Tên ngành
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENNGANH)
+        </dd>
+
+        <dt>
+            
+        </dt>
+
+        <dd>
+           <button class="btn">@Html.ActionLink("Sửa", "Edit", new { id = Model.IDNGANH })</button>
+        <button class="btn">@Html.ActionLink("Quay lại", "Index")</button>
+        </dd>
+
+    </dl>
+</div>

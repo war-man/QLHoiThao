@@ -1,0 +1,90 @@
+﻿@model QLHoiThaoProject.Models.EFModel.THANHVIEN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Quản lý Thành Viên
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Thông tin thành viên</li>
+    </ol>
+</div><!--/.row-->
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Ghi chú</li>
+        <li class="active">Trạng thái = True : Tài khoản đã kích hoạt</li>
+        <li class="active">Trạng thái = False : Tài khoản chưa kích hoạt</li>
+    </ol>
+</div><!--/.row-->
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Tên thành viên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENTV)
+        </dd>
+
+        <dt>
+           Email thành viên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAILTV)
+        </dd>
+
+        <dt>
+            Số điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDTTV)
+        </dd>
+        <dt>
+            Tên lớp
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOP.TENLOP)
+        </dd>
+        <dt>
+            Tên đăng nhập
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USERNAME)
+        </dd>
+
+        <dt hidden>
+            Mật khẩu
+        </dt>
+
+        <dd hidden>
+            @Html.DisplayNameFor(model => model.PASSWORD)
+        </dd>
+
+        <dt>
+            Trạng thái
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANGTHAI)
+        </dd>
+
+        <dt>
+            
+        </dt>
+
+        <dd>
+            <button class="btn">@Html.ActionLink("Edit", "Edit", new { id = Model.IDTV })</button>
+            <button class="btn">@Html.ActionLink("Quay lại", "Index")</button>
+        </dd>
+
+    </dl>
+</div>

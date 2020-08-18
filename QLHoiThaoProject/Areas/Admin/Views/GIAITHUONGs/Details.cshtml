@@ -1,0 +1,55 @@
+﻿@model QLHoiThaoProject.Models.EFModel.GIAITHUONG
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@section IndexAdmin{
+    Quản lý Giải thưởng
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Thông tin Giải thưởng</li>
+    </ol>
+</div><!--/.row-->
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Tên môn thi đấu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MONTHIDAU.TENMTD)
+        </dd>
+
+        <dt>
+            Tên giải thưởng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENGT)
+        </dd>
+
+        <dt>
+            Giá trị giải thưởng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIATRIGT)
+        </dd>
+
+        <dt>
+            
+        </dt>
+
+        <dd>
+            <button class="btn">@Html.ActionLink("Sửa", "Edit", new { id = Model.IDGT })</button>
+            <button class="btn">@Html.ActionLink("Quay lại", "Index")</button>
+        </dd>
+
+    </dl>
+</div>
+

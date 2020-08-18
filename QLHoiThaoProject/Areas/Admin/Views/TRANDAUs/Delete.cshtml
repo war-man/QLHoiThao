@@ -1,0 +1,84 @@
+﻿@model QLHoiThaoProject.Models.EFModel.TRANDAU
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section IndexAdmin{
+    Quản lý trận đấu
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Xóa trận đấu</li>
+    </ol>
+</div><!--/.row-->
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active"><h3>Ghi chú</h3></li>
+        <li class="active">Trạng thái = True : Đã thi đấu</li>
+        <li class="active">Trạng thái = False : Chưa thi đấu</li>
+    </ol>
+</div><!--/.row-->
+<h3>Bạn có chắc muốn xóa?</h3>
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Tên sân thi đấu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SANTHIDAU.TENSTD)
+        </dd>
+
+        <dt>
+            Tên vòng đấu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VONGDAU.TENVONGDAU)
+        </dd>
+
+        <dt>
+            Thời gian bắt đầu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THOIGIANBD)
+        </dd>
+
+        <dt>
+            Thời gian kết thúc
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THOIGIANKT)
+        </dd>
+
+        <dt>
+            Ngày thi đấu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYTHIDAU)
+        </dd>
+
+        <dt>
+            Trạng thái
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANGTHAI)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+    }
+</div>

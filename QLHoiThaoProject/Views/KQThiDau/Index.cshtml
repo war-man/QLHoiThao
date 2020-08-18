@@ -1,0 +1,68 @@
+﻿@model IEnumerable<QLHoiThaoProject.Models.EFModel.CTTRANDAU>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Chi tiết trận đấu của môn @ViewData["TenMon"]</li>
+    </ol>
+</div><!--/.row-->
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TRANDAU.VONGDAU.TENVONGDAU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOI.TENDOI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TRANDAU.THOIGIANBD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KETQUA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TISO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DIEM)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <th>
+            @Html.DisplayFor(modelItem => item.TRANDAU.VONGDAU.TENVONGDAU)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOI.TENDOI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TRANDAU.THOIGIANBD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KETQUA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TISO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DIEM)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDDOI, idtd=item.IDTD }) |
+            @Html.ActionLink("Details", "Details", new { id = item.IDDOI, idtd = item.IDTD })
+            @*@Html.ActionLink("Delete", "Delete", new { id = item.IDDOI, idtd = item.IDTD })*@
+        </td>
+    </tr>
+}
+
+</table>

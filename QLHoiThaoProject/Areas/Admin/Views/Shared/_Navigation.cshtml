@@ -1,0 +1,98 @@
+﻿<!--sidebar start-->
+<aside>
+    <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+
+            <li class="mt">
+                <a href="@Url.Action("Index", "Home")">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Trang chủ</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;">
+                    <i class="fa fa-cogs"></i>
+                    <span>Quản lý thông tin</span>
+                </a>
+                <ul class="sub">
+                    <li><a href="@Url.Action("Index", "NGANHs")">Ngành</a></li>
+                    <li><a href="@Url.Action("Index", "LOPs")">Lớp</a></li>
+                    <li><a href="@Url.Action("Index", "SINHVIENs")">Sinh viên</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;">
+                    <i class="fa fa-desktop"></i>
+                    <span>Quản lý tài khoản</span>
+                </a>
+                <ul class="sub">
+                <li><a href="@Url.Action("Index", "THANHVIENs")">Thành viên</a></li>
+                <li><a href="@Url.Action("Index", "CBQUANLies")">Cán bộ quản lý</a></li>
+            </ul>
+            </li>            
+            <li class="sub-menu">
+                <a href="javascript:;">
+                    <i class="fa fa-tasks"></i>
+                    <span>Quản lý hội thao</span>
+                </a>
+                <ul class="sub">
+                    <li><a href="@Url.Action("Index","HOITHAOs")">Kỳ hội thao</a></li>
+                    <li><a href="@Url.Action("Index","LOAIMTDs")">Loại môn thi đấu</a></li>
+                    <li><a href="@Url.Action("Index","MONTHIDAUs")">Danh sách môn thi đấu</a></li>
+                    <li><a href="@Url.Action("Index","QUYDINHs")">Quy định thi đấu</a></li>
+                    <li><a href="@Url.Action("Index","KINHPHIHOTROes")">Kinh phí hỗ trợ</a></li>
+                    <li><a href="@Url.Action("Index","GIAITHUONGs")">Giải thưởng</a></li>
+                    <li><a href="@Url.Action("Index","QUANLYHTs")">Phân công cán bộ quản lý hội thao</a></li>
+                    <li><a href="@Url.Action("Index","COMTDs")">Môn thi đấu trong hội thao</a></li>                                        
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;">
+                    <i class="fa fa-book"></i>
+                    <span>Quản lý trận đấu</span>
+                </a>
+                <ul class="sub">
+                    <li><a href="@Url.Action("Index","BANGDAUs")">Bảng đấu</a></li>
+                    <li><a href="@Url.Action("Index","TRONGTAIs")">Trọng tài</a></li>
+                    <li><a href="@Url.Action("Index","VONGDAUs")">Vòng đấu</a></li>
+                    <li><a href="@Url.Action("Index","SANTHIDAUs")">Sân thi đấu</a></li>
+                    <li><a href="@Url.Action("TimHT","DOIs")">Đội</a></li>
+                    <li><a href="@Url.Action("Index","TRANDAUs")">Trận đấu</a></li>
+                    <li><a href="@Url.Action("TimHT_TranDau","CTTRANDAUs")">Cập nhật kết quả</a></li>
+                    <li><a href="@Url.Action("Index","HINHANHs")">Hình ảnh</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                @*<a href="@Url.Action("LichThiDau","CTTRANDAUs")">
+                    <i class="fa fa-th"></i>
+                    <span>Lịch thi đấu</span>
+                </a>*@
+                <a href="@Url.Action("TimHT_TranDau","TRANDAUs")">
+                    <i class="fa fa-th"></i>
+                    <span>Lịch thi đấu</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a href="@Url.Action("TimHT_TranDau","KQThiDau")">
+                    <i class="fa fa-bar-chart-o"></i>
+                    <span>Kết quả thi đấu</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a href="@Url.Action("Index","LIENHEs")">
+                    <i class="fa fa-bar-chart-o"></i>
+                    <span>Liên hệ</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a href="@Url.Action("TimHT_ThongKe","ThongKeBaoCao")">
+                    <i class="fa fa-book"></i>
+                    <span>Thống kê - Báo cáo</span>
+                </a>
+            </li>
+        </ul>
+        <!-- sidebar menu end-->
+    </div>
+</aside>
+<!--sidebar end-->

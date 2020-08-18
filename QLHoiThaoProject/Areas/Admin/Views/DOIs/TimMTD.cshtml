@@ -1,0 +1,40 @@
+﻿@model IEnumerable<QLHoiThaoProject.Models.EFModel.DOI>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section IndexAdmin{
+    Chọn môn cần lập bảng
+}
+<div>
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Mã môn
+            </th>
+            <th>
+                Tên môn
+            </th>
+
+            <th></th>
+        </tr>
+        @foreach (var item in ViewBag.IDMTD)
+        {
+            <tr>
+                <td>
+                    @item.IDMTD @*ĐỂ NGUYÊN BIẾN ITEM THÌ NÓ RA NGUYÊN NÙI, GIỜ MUỐN LẤY RA TỪNG CỘT KHÔNG BIẾT CÚ PHÁP SAO*@
+                </td>
+                <td>
+                    @item.MONTHIDAU.TENMTD
+                </td>
+                <td>
+                    @Html.ActionLink("Tìm", "Index", new { id = item.IDHT, idMTD = item.IDMTD })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+

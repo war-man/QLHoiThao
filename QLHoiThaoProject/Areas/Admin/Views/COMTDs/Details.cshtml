@@ -1,0 +1,55 @@
+﻿@model QLHoiThaoProject.Models.EFModel.COMTD
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@section IndexAdmin{
+    Quản lý DS Môn thi đấu trong hội thao
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Thông tin DS Môn thi đấu trong hội thao</li>
+    </ol>
+</div><!--/.row-->
+
+<div>
+  
+    <dl class="dl-horizontal">
+        <dt>
+            Tên hội thao
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOITHAO.TENHT)
+        </dd>
+
+        <dt>
+            Tên môn thi đấu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MONTHIDAU.TENMTD)
+        </dd>
+
+        <dt>
+            Ghi chú
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GHICHU)
+        </dd>
+
+        <dt>
+            
+        </dt>
+
+        <dd>
+            <button class="btn">@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })</button>
+            <button class="btn">@Html.ActionLink("Back to List", "Index")</button>
+        </dd>
+
+    </dl>
+</div>

@@ -1,0 +1,50 @@
+﻿@model QLHoiThaoProject.Models.EFModel.SANTHIDAU
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@section IndexAdmin{
+    Quản lý Hình ảnh
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Cập nhật thông tin sân thi đấu</li>
+    </ol>
+</div><!--/.row-->
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IDSTD)
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Tên sân thi đấu</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TENSTD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TENSTD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Mô tả</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MOTA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MOTA, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button class="btn" type="submit">@Html.ActionLink("Hủy", "Index", "SANTHIDAUs")</button>
+                <input type="submit" value="Lưu" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

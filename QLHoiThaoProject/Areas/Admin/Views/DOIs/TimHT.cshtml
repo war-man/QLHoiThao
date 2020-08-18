@@ -1,0 +1,48 @@
+﻿@model IEnumerable< QLHoiThaoProject.Models.EFModel.DOI>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section IndexAdmin{
+    Quản lý đội thi đấu
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Chọn kỳ hội thao</li>
+    </ol>
+</div><!--/.row-->
+
+<div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Mã hội thao
+                </th>
+                <th>
+                    Tên hội thao
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.IDHT)
+            {
+                <tr>
+                    <td>
+                        @item.IDHT
+                    </td>
+                    <td>
+                        @item.TENHT
+                    </td>
+                    <td>
+                        @Html.ActionLink("Chọn", "Index", new { id = item.IDHT })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>      
+</div>

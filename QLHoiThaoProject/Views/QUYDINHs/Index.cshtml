@@ -1,0 +1,51 @@
+﻿
+@model IEnumerable<QLHoiThaoProject.Models.EFModel.QUYDINH>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid f">
+    <div class="container f">
+        <div class="panel panel-primary">
+            <div class="row">
+                <div class="col-md-9">
+                    <div id="bookbody" style="width:1106px;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">QUY ĐỊNH THI ĐẤU CÁC MÔN</div>
+                                    <div class="panel-body" style="padding-bottom: 0px;">
+                                        <div class="row">
+
+
+                                            <table class="table table-hover" style="width:1130px;">
+
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayFor(modelItem => item.MONTHIDAU.TENMTD)
+                                                        </th>
+                                                        <th>
+                                                            @Html.ActionLink("Xem quy định", "Details", new { id = item.IDQUYDINH })
+                                                        </th>
+                                                    </tr>
+                                                }
+
+                                            </table>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

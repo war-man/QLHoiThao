@@ -1,0 +1,75 @@
+﻿
+
+@{
+    ViewBag.Title = "LichTranDau";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section IndexAdmin{
+    Cập nhật kết quả thi đấu
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <table class="table table-hover">
+        
+        @for (var i = 0; i < 1; i++)
+        {
+            @*@Html.Hidden("IDTD", ViewData["IDTD"])*@
+            <tr>
+                <th>Môn thi đấu</th>
+                <td colspan="2"><div class="form-control disabled">@ViewBag.CTTRAN[i].DOI.MONTHIDAU.TENMTD</div></td>
+            </tr>
+            <tr>
+                <th>Vòng đấu</th>
+                <td colspan="2"><div class="form-control disabled">@ViewBag.CTTRAN[i].TRANDAU.VONGDAU.TENVONGDAU</div></td>
+            </tr>
+            <tr>
+                <th>Bảng đấu</th>
+                <td colspan="2"><div class="form-control disabled">@ViewBag.CTTRAN[i].DOI.BANGDAU.TENBANG</div></td>
+            </tr>            
+            <tr>
+                <th>Đội thi đấu</th>
+                <td align="center">
+                    <div class="form-control disabled">@ViewBag.CTTRAN[i].DOI.TENDOI</div>
+                </td>
+                <td align="center"><div class="form-control disabled">@ViewBag.CTTRAN[i + 1].DOI.TENDOI</div></td>
+            </tr>
+            <tr>
+                <th>Tỉ số</th>
+                <td>@Html.TextBox("txtTiSo1", ViewData["tisodoi1"], htmlAttributes: new { @class = "form-control"})</td>
+                <td>@Html.TextBox("txtTiSo2", ViewData["tisodoi2"], htmlAttributes: new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <th>Điểm</th>
+                <td>@Html.TextBox("txtSoDiem1", ViewData["diemdoi1"], htmlAttributes: new { @class = "form-control" })</td>
+                <td>@Html.TextBox("txtSoDiem2", ViewData["diemdoi2"], htmlAttributes: new { @class = "form-control" })</td>
+            </tr>            
+            <tr>
+                <th>Trọng tài</th>
+                <td colspan="2"><div class="form-control disabled">@ViewBag.CTTRAN[i].TRANDAU.TRONGTAI.TENTRONGTAI</div></td>
+            </tr>
+            <tr>
+                <th>Sân thi đấu</th>
+                <td colspan="2"><div class="form-control disabled">@ViewBag.CTTRAN[i].TRANDAU.SANTHIDAU.TENSTD</div></td>
+            </tr>
+            <tr>
+                <th>Ngày thi đấu</th>
+                <td colspan="2"><div class="form-control disabled">@ViewBag.CTTRAN[i].TRANDAU.NGAYTHIDAU</div></td>
+            </tr>
+            <tr>
+                <th>Thời gian</th>
+                <td colspan="2"><div class="form-control disabled">@ViewBag.CTTRAN[i].TRANDAU.THOIGIANBD - @ViewBag.CTTRAN[i].TRANDAU.THOIGIANKT</div></td>
+            </tr>                
+            <tr>
+                <th></th>
+                <td colspan="2">
+                    <a class="btn btn-default" href="@Url.Action("TimHT_TranDau","CTTRANDAUs")">Trở về</a>
+                    <input type="submit" name="btnCapNhat" value="Cập nhật" class="btn btn-primary" />
+                </td>
+            </tr>
+        }
+    </table>
+    
+}

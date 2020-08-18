@@ -1,0 +1,54 @@
+﻿@model QLHoiThaoProject.Models.EFModel.KINHPHIHOTRO
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Quản lý Kinh phí hỗ trợ
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Thông tin Kinh phí hỗ trợ</li>
+    </ol>
+</div><!--/.row-->
+
+<div>
+ 
+    <dl class="dl-horizontal">
+        <dt>
+            Tên hội thao
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOITHAO.TENHT)
+        </dd>
+        <dt>
+            Tên môn thi đấu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MONTHIDAU.TENMTD)
+        </dd>
+
+        <dt>
+            Giá trị hỗ trợ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIATRI)
+        </dd>
+
+        <dt>
+            
+        </dt>
+
+        <dd>
+            <button class="btn">@Html.ActionLink("Sửa", "Edit", new { id = Model.IDKINHPHI })</button>
+            <button class="btn">@Html.ActionLink("Quay lại", "Index")</button>
+        </dd>
+
+    </dl>
+</div>
+

@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "ThemTV";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section IndexAdmin{
+   Thêm thành viên vào đội <strong><font color="red">@ViewData["TenDoi"]</font></strong>
+}
+
+<div class="row">
+    <div class="col-md-6"><div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Danh sách sinh viên của lớp</li>
+    </ol>
+</div><!--/.row-->
+<table class="table table-hover" style="width:90%">
+    <tr>
+        <th>
+            Mã sinh viên
+        </th>
+        <th>
+            Họ tên
+        </th>
+        <th>
+            
+        </th>
+    </tr>
+    @foreach (var item in ViewBag.DANHSACHSV)
+    {
+        <tr>
+            <td>
+                @item.IDSV
+            </td>
+            <td>
+                @item.HOTEN
+            </td>
+            <td>
+                @Html.ActionLink("Thêm", "ThaoTacTV", new { id = ViewData["MaDoi"], idlop = item.IDLOP, idsv = item.IDSV })
+            </td>
+        </tr>
+    }
+
+</table>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li class="active">Danh sách thành viên đội</li>
+            </ol>
+        </div><!--/.row-->
+        <table class="table table-hover" style="width:90%">
+            <tr>
+                <th>
+                    Mã sinh viên
+                </th>
+                <th>
+                    Họ tên
+                </th>
+                <th>
+                    
+                </th>
+            </tr>
+            @foreach (var item in ViewBag.DANHSACHTV)
+            {
+                <tr>
+                    <td>
+                        @item.THANHVIENDOI.IDSV
+                    </td>
+                    <td>
+                        @item.THANHVIENDOI.TENVDV
+                    </td>
+                    <td>
+                        @Html.ActionLink("Xóa", "ThaoTacTV", new { id = ViewData["MaDoi"], idlop = ViewData["MaLop"], idsv = item.THANHVIENDOI.IDSV, idtt = 1 })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 pull-right"><h3>@Html.ActionLink("Quay lại", "Index", new { id = ViewData["IDHoiThao"] })</h3></div>
+    <div class="col-md-4"></div>
+</div>
+
+
+

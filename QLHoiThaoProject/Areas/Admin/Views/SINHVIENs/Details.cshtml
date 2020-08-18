@@ -1,0 +1,62 @@
+﻿@model QLHoiThaoProject.Models.EFModel.SINHVIEN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section IndexAdmin{
+    Quản lý Sinh viên
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Thông tin sinh viên</li>
+    </ol>
+</div><!--/.row-->
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Tên lớp
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOP.TENLOP)
+        </dd>
+
+        <dt>
+            Họ tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOTEN)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+        <dt>
+            Số điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt>
+            
+        </dt>
+
+        <dd>
+            <button class="btn">@Html.ActionLink("Sửa", "Edit", new { id = Model.IDSV })</button>
+            <button class="btn">@Html.ActionLink("Quay lại", "Index")</button>
+        </dd>
+
+    </dl>
+</div>

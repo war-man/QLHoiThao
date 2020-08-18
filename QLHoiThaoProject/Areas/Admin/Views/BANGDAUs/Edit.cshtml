@@ -1,0 +1,41 @@
+﻿@model QLHoiThaoProject.Models.EFModel.BANGDAU
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Quản lý Bảng đấu
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Cập nhật thông tin bảng đấu</li>
+    </ol>
+</div><!--/.row-->
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IDBANG)
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Tên bảng</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TENBANG, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TENBANG, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button class="btn" type="submit">@Html.ActionLink("Hủy", "Index","BANGDAUs")</button>
+                <input type="submit" value="Lưu" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+

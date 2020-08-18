@@ -1,0 +1,78 @@
+﻿@model QLHoiThaoProject.Models.EFModel.KINHPHIHOTRO
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section IndexAdmin{
+    Quản lý Kinh phí hỗ trợ
+}
+
+<div>
+    <div class="row">
+        <ol class="breadcrumb">
+            <li class="active">Danh sách tất cả các môn thi đấu</li>
+        </ol>
+    </div><!--/.row-->
+    <table class="table">
+        <tr>
+            <th>Mã môn thi đấu</th>
+            <th>Tên môn thi đấu</th>
+        </tr>
+        @foreach (var item in ViewBag.TenMTD)
+        {
+            <tr>
+                <td>@item.IDMTD</td>
+                <td>@item.TENMTD</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Cập nhật Kinh phí hỗ trợ</li>
+    </ol>
+</div><!--/.row-->
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+ 
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IDKINHPHI)
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Tên hội thao</div>
+            <div class="col-md-10">
+                @Html.DropDownList("IDHT", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDHT, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Mã môn thi đấu</div>
+            <div class="col-md-10">
+                @Html.DropDownList("IDMTD", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDMTD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Giá trị hỗ trợ</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GIATRI, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GIATRI, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button class="btn" type="submit">@Html.ActionLink("Hủy", "Index", "KINHPHIHOTROes")</button>
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

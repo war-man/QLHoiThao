@@ -1,0 +1,71 @@
+﻿@model QLHoiThaoProject.Models.EFModel.HOITHAO
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@section IndexAdmin{
+    Quản lý Kỳ hội thao
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Thông tin kỳ hội thao</li>
+    </ol>
+</div><!--/.row-->
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Tên hội thao
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENHT)
+        </dd>
+
+        <dt>
+            Ngày bắt đầu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TUNGAY)
+        </dd>
+
+        <dt>
+            Ngày kết thúc
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DENNGAY)
+        </dd>
+
+        <dt>
+            Ngày đăng ký
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYBDDK)
+        </dd>
+
+        <dt>
+            Hạn đăng ký
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYKTDK)
+        </dd>
+
+        <dt>
+            
+        </dt>
+
+        <dd>
+            <button class="btn">@Html.ActionLink("Sửa", "Edit", new { id = Model.IDHT })</button>
+            <button class="btn">@Html.ActionLink("Quay lại", "Index")</button>
+        </dd>
+
+    </dl>
+</div>

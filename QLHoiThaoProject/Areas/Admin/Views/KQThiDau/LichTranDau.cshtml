@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "LichTranDau";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section IndexAdmin{
+    Quản lý kết quả thi đấu
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Danh sách trận đấu</li>
+    </ol>
+</div><!--/.row-->
+<div>
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Môn thi đấu
+            </th>
+            <th>
+                Vòng đấu
+            </th>   
+            <th>
+                Mã trận đấu
+            </th>  
+            <th>
+                Tên bảng đấu
+            </th>  
+            <th>
+                Ngày thi đấu
+            </th>  
+            <th>Thời gian</th>
+            <th>
+                Sân thi đấu
+            </th>  
+            <th>
+                Đội thi đấu
+            </th>  
+            <th>
+                Tỉ số
+            </th>         
+            <th>
+                Điểm
+            </th>
+        </tr>
+        @for (var i = 0; i < ViewBag.Total; i++)
+        {
+            <tr>
+                <td>
+                    @ViewBag.LICHDAU[i].DOI.MONTHIDAU.TENMTD
+                </td>
+                <td>
+                    @ViewBag.TRANDAU[i].VONGDAU.TENVONGDAU  
+                </td>
+                <td>
+                    @ViewBag.TRANDAU[i].IDTD
+                </td>
+               <td>
+                    @ViewBag.LICHDAU[i].DOI.BANGDAU.TENBANG
+                </td>
+                <td>
+                    @ViewBag.TRANDAU[i].NGAYTHIDAU
+                </td>
+                <td>@ViewBag.TRANDAU[i].THOIGIANBD - @ViewBag.TRANDAU[i].THOIGIANKT</td>
+                <td>
+                    @ViewBag.TRANDAU[i].SANTHIDAU.TENSTD
+                </td>
+                <td>
+                    @ViewBag.LICHDAU[i].DOI.TENDOI - @ViewBag.LICHDAU[i + 1].DOI.TENDOI                                        
+                </td>
+                <td>@ViewBag.LICHDAU[i].TISO - @ViewBag.LICHDAU[i + 1].TISO</td>
+                <td>@ViewBag.LICHDAU[i].DIEM - @ViewBag.LICHDAU[i + 1].DIEM</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-2"><button class="btn">@Html.ActionLink("Quay lại", "TimHT_TranDau", "KQThiDau")</button></div>
+    <div class="col-md-5"></div>
+</div>

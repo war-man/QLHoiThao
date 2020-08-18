@@ -1,0 +1,81 @@
+﻿@*<script src="http://cdn.jsdelivr.net/alasql/0.3/alasql.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.7.12/xlsx.core.min.js"></script>*@
+
+<script src="~/Content/Admin/js/alasql.min.js"></script>
+<script src="~/Content/Admin/js/xlsx.core.min.js"></script>
+
+@model List<QLHoiThaoProject.Models.DSKinhPhiHoTro>
+@{
+    ViewBag.Title = "DanhSachKinhPhiHoTroTheoMon";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section IndexAdmin{
+    Thống kê - Báo cáo
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Danh sách kinh phí hỗ trợ</li>
+    </ol>
+</div><!--/.row-->
+
+<table id="MyInquires" class="table table-hover">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên môn thi đấu</th>
+            <th>Tổng kinh phí hỗ trợ</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ 
+            int i = 1;
+            foreach (var item in ViewBag.DANHSACHKP){
+
+            <tr>
+                <td>@i</td>
+                <td>@item.TenMTD</td>
+                <td>@item.TongGT</td>
+            </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>
+<div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-1"><button class="btn btn-default">@Html.ActionLink("Trở về", "TimHT_ThongKe", "ThongKeBaoCao")</button></div>
+    <div class="col-md-1"><button class="btn btn-default" onclick="window.exportExcel()"><span class="glyphicon glyphicon-cloud-download"></span> Excel</button></div>
+    <div class="col-md-5"></div>
+</div>
+<script type="text/javascript">
+    window.exportExcel = function exportExcel() {
+        alasql('SELECT * INTO XLSX("DSKinhPhiHoTro.xlsx",{headers:true}) \
+                    FROM HTML("#MyInquires",{headers:true})');
+    }
+
+</script>
+
+
+
+
+
+
+
+@*<button onclick="window.exportExcel1()">Export table to Excel</button>
+<p>Source table</p>
+<table id="MyInquires">
+    <thead><tr><th>#<th>Inquiry<th>Topic</thead>
+    <tbody>
+        <tr><td>1<td>WinPhone<td>Screen
+        <tr><td>2<td>iPhone<td>Keyboard
+        <tr><td>3<td>Android<td>Memory
+    </tbody>
+</table>
+<script type="text/javascript">
+window.exportExcel1 =     function exportExcel() {
+        alasql('SELECT * INTO XLSX("myinquires.xlsx",{headers:true}) \
+                    FROM HTML("#MyInquires",{headers:true})');
+    }
+
+</script>*@
+

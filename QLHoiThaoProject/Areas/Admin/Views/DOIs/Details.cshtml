@@ -1,0 +1,78 @@
+﻿@model QLHoiThaoProject.Models.EFModel.DOI
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section IndexAdmin{
+    Quản lý đội thi đấu
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Thông tin đội đăng ký thi đấu</li>
+    </ol>
+</div><!--/.row-->
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Tên bảng đấu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BANGDAU.TENBANG)
+        </dd>
+
+        <dt>
+            Tên hội thao
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOITHAO.TENHT)
+        </dd>
+
+        <dt>
+            Tên lớp
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOP.TENLOP)
+        </dd>
+
+        <dt>
+            Tên môn thi đấu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MONTHIDAU.TENMTD)
+        </dd>
+
+        <dt>
+            Bị loại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BILOAI)
+        </dd>
+
+        <dt>
+            Tên đội
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENDOI)
+        </dd>
+
+        <dt>
+
+        </dt>
+
+        <dd>
+            <button class="btn">@Html.ActionLink("Sửa", "Edit", new { id = Model.IDDOI })</button>
+            <button class="btn">@Html.ActionLink("Quay lại", "Index")</button>
+        </dd>
+
+    </dl>
+</div>

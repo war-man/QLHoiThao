@@ -1,0 +1,54 @@
+﻿@model QLHoiThaoProject.Models.EFModel.QUANLYHT
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Quản lý Phân công cán bộ
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Thông tin Phân công cán bộ</li>
+    </ol>
+</div><!--/.row-->
+
+<div>
+  
+    <dl class="dl-horizontal">
+        <dt>
+            Tên cán bộ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CBQUANLY.TENCB)
+        </dd>
+
+        <dt>
+            Tên hội thao
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOITHAO.TENHT)
+        </dd>
+
+        <dt>
+            Ghi chú
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GHICHU)
+        </dd>
+
+        <dt>
+            
+        </dt>
+
+        <dd>
+            <button class="btn">@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })</button>
+            <button class="btn">@Html.ActionLink("Back to List", "Index")</button>
+        </dd>
+
+    </dl>
+</div>

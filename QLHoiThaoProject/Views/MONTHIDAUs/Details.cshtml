@@ -1,0 +1,89 @@
+﻿@model QLHoiThaoProject.Models.EFModel.MONTHIDAU
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var session = (QLHoiThaoProject.Common.TVLogin)Session[QLHoiThaoProject.Common.TVCommonConstants.TVUSER_SESSION];
+    //var sessionLopID = (QLHoiThaoProject.Common.TVLogin)Session[QLHoiThaoProject.Common.TVCommonConstants.TVLopID_SESSION];
+}
+<div class="container-fluid f">
+    <div class="container f">
+        <div class="panel panel-primary">
+            <div class="row">
+                <div class="col-md-9">
+                    <div id="bookbody" style="width:1106px;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">MÔN THI ĐẤU <strong>@Model.TENMTD</strong></div>
+                                    <div class="panel-body" style="padding-bottom: 0px;">
+                                        <div class="row">
+
+                                            <div>                                                
+                                                <dl class="dl-horizontal">
+                                                    <dt>
+                                                        Loại môn thi đấu
+                                                    </dt>
+
+                                                    <dd>
+                                                        @Model.LOAIMTD.TENLOAIMTD
+                                                    </dd>
+
+                                                    <dt hidden>
+                                                        @Html.DisplayNameFor(model => model.IDMTD)
+                                                    </dt>
+
+                                                    <dd hidden>
+                                                        @Model.IDMTD
+                                                    </dd>
+
+                                                    <dt>
+                                                        Tên môn thi đấu
+                                                    </dt>
+
+                                                    <dd>
+                                                        @Model.TENMTD
+                                                    </dd>
+
+                                                    <dt>
+                                                        Mô tả
+                                                    </dt>
+
+                                                    <dd>
+                                                        @Model.MOTA
+                                                    </dd>
+
+                                                    <dt>
+                                                        
+                                                    </dt>
+
+                                                    <dd>
+                                                        <button class="btn">@Html.ActionLink("Trở về", "Index", "Home")</button>
+                                                        @if (session == null)
+                                                        {
+                                                            <button class="btn" onclick="alert('Bạn chưa đăng nhập!\n Vui lòng đăng nhập!')">@Html.ActionLink("Đăng ký", "Login", "THANHVIENs")</button>
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.ActionLink("Đăng ký", "Register", "DOIs")
+                                                        }
+                                                        
+                                                    </dd>
+
+                                                </dl>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

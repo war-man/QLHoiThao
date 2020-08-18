@@ -1,0 +1,30 @@
+﻿
+
+@{
+    ViewBag.Title = "LichTranDau";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <table>
+        
+        @for (var i = 0; i < 1; i++)
+        {
+            @*@Html.Hidden("IDTD", ViewData["IDTD"])*@
+        <tr>
+            
+            <td>
+                @ViewBag.CTTRAN[i].DOI.TENDOI @Html.TextBox("txtTiSo1", ViewData["IDTD"])  -  @Html.TextBox("txtTiSo2") @ViewBag.CTTRAN[i+1].DOI.TENDOI <br />
+                <label>Diem So Dat Duoc</label>>@Html.TextBox("txtSoDiem1")  <label>Diem So Dat Duoc</label>>@Html.TextBox("txtSoDiem2")
+            </td>
+            <td>
+                @*<label>KQ DOI 1</label> @Html.TextBox("txtDoiThang1") - <label>KQ DOI 2</label> @Html.TextBox("txtDoiThang2")*@
+            </td>
+        </tr>
+        }
+    </table>
+    <input type="submit" name="btnCapNhat" />
+}

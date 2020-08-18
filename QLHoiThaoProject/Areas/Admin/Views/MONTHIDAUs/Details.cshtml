@@ -1,0 +1,63 @@
+﻿@model QLHoiThaoProject.Models.EFModel.MONTHIDAU
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Quản lý Môn thi đấu
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Thông tin môn thi đấu</li>
+    </ol>
+</div><!--/.row-->
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Tên loại môn thi đấu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOAIMTD.TENLOAIMTD)
+        </dd>
+
+        <dt>
+           Tên môn thi đấu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENMTD)
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOTA)
+        </dd>
+
+        <dt>
+            Ảnh môn thi đấu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HINHANH)
+        </dd>
+
+        <dt>
+            
+        </dt>
+
+        <dd>
+            <button class="btn">@Html.ActionLink("Edit", "Edit", new { id = Model.IDMTD })</button>
+            <button class="btn">@Html.ActionLink("Back to List", "Index")</button>
+        </dd>
+
+    </dl>
+</div>

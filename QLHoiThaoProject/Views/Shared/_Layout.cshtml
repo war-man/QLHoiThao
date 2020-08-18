@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Quản lý Hội thao Online</title>
+    <link href="~/Content/Client/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Content/Client/js/jquery.min.js"></script>
+    <script src="~/Content/Client/js/slider.js"></script>
+
+    <style>
+        .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+            width: 100%;
+            margin: auto;
+        }
+    </style>
+    <link href="~/Content/Client/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <img id="bttop" src="~/Content/Client/images/backToTop.png" width="5%" />
+
+    @{
+        var sessionCBQL = (QLHoiThaoProject.Common.UserLogin)Session[QLHoiThaoProject.Common.CommonConstants.USER_SESSION];
+        var session = (QLHoiThaoProject.Common.TVLogin)Session[QLHoiThaoProject.Common.TVCommonConstants.TVUSER_SESSION];
+        //var sessionLopID = (QLHoiThaoProject.Common.TVLogin)Session[QLHoiThaoProject.Common.TVCommonConstants.TVLopID_SESSION];
+    }
+    <div class="container">
+        @if (session == null && sessionCBQL == null)
+        {
+            <div class="container-fluid pull-right">
+                <ul class="nav navbar-nav navbar-right" style="padding-top:5px; margin-right:0px;">
+                    @*<li><a href="@Url.Action("Register","THANHVIENs")"><span class="glyphicon glyphicon-user"></span> Đăng ký</a></li>*@
+                    @*<li><a href="@Url.Action("Login","THANHVIENs")"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</a></li>*@
+                    <li>
+                        <div class="btn-group">
+                            <a class="btn btn-default" href="@Url.Action("Register","THANHVIENs")"><span class="glyphicon glyphicon-user"></span> Đăng ký</a>                            
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group">
+                            <a class="btn btn-default" href="@Url.Action("Login","THANHVIENs")"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</a>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/Admin/Login/Index">Admin</a></li>                                
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        }
+        else if(session != null && sessionCBQL==null)
+        {
+            <div class="container-fluid pull-right">
+                <ul class="nav navbar-nav navbar-right" style="padding-top:5px; margin-right:0px;">
+                    <li><div class="btn-group"><a class="btn btn-default" href="#"><span class="glyphicon glyphicon-user"></span> Xin chào @session.USERNAME</a></div></li>
+                    <li><div class="btn-group"><a class="btn btn-default" href="@Url.Action("Logout","THANHVIENs")"><span class="glyphicon glyphicon-log-out"></span> Đăng xuất</a></div></li>
+                    @*<li>Xin chào @session.UserName</li>*@
+                    @*<li>@Html.ActionLink("Thoát", "Logout", "THANHVIENs")</li>*@
+                </ul>
+            </div>
+        }
+        else if(session == null && sessionCBQL != null)
+        {
+        <div class="container-fluid pull-right">
+            <ul class="nav navbar-nav navbar-right" style="padding-top:5px; margin-right:0px;">
+                <li><div class="btn-group"><a class="btn btn-default" href="#"><span class="glyphicon glyphicon-user"></span> Xin chào @sessionCBQL.UserName</a></div></li>
+                <li><div class="btn-group"><a class="btn btn-default" href="/Admin/Home">Trang quản lý</a></div></li>
+                <li><div class="btn-group"><a class="btn btn-default" href="@Url.Action("Logout","THANHVIENs")"><span class="glyphicon glyphicon-log-out"></span> Đăng xuất</a></div></li>
+                @*<li>Xin chào @session.UserName</li>*@
+                @*<li>@Html.ActionLink("Thoát", "Logout", "THANHVIENs")</li>*@
+            </ul>
+        </div>
+        }
+
+        <div style="clear:both"></div>
+        <div class="container-fluid"> <img width="1141px" height="195px" src="~/Content/Client/images/banner/banner-khoa-cong-nghe-thong-tin.jpg" /> </div>
+        <div style="clear:both; margin-bottom:2px;"></div>
+        <div class="container-fluid">
+            <nav class="navbar navbar-default" id="nav">
+                <div class="container" id="bg-nav">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                        <a class="navbar-brand" href="@Url.Action("Index","Home")"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="@Url.Action("Index","Home")"><strong>Trang chủ</strong></a></li>
+                            <li data-toggle="modal" data-target="#myModal-gt"><a href="#"><strong>Giới Thiệu</strong></a></li>
+                            @*<li><a href="#"><strong>Giới thiệu</strong></a></li>*@
+                            <li><a href="@Url.Action("Index","QUYDINHs")"><strong>Quy định</strong></a></li>
+                            <li><a href="@Url.Action("TimHT_TranDau","TRANDAUs")"><strong>Lịch thi đấu</strong></a></li>
+                            <li><a href="@Url.Action("TimHT_TranDau","KQThiDau")"><strong>Kết quả thi đấu</strong></a></li>
+                            <li><a href="@Url.Action("Create","LIENHEs")"><strong>Liên Hệ</strong></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div style="clear:both; margin-bottom:2px;"></div>
+    </div>
+
+    <br>
+    @RenderBody()
+    <div id="lh" class="container-fluid">
+        <div class="container" style="background:#33363C;color:#CCC; width:1141px;">
+            <div class="row">
+                <div style="margin-left:15px;">
+                    <div class="diachi"><span class="glyphicon glyphicon-pushpin" style="padding-right:5px; color:#F3F3F9;"></span>Khoa Công nghệ thông tin & truyền thông</div>
+                    <div class="diachi"><span class="glyphicon glyphicon-globe" style="padding-right:10px"></span>Địa chỉ: Khu II, đường 3 tháng 2 Hưng Lợi, Ninh Kiều, TP Cần Thơ.</div>
+                    @*<div class="diachi"><span class="glyphicon glyphicon-globe" style="padding-right:10px"></span>Liên hệ:</div>
+                    <div class="diachi"><span class="glyphicon glyphicon-globe" style="padding-right:10px"></span>Email:</div>*@
+                </div>
+            </div>
+            <hr />
+            <div style="margin-bottom:65px;">
+                <div style="float:left">&copy;&nbsp;Copyright 2017</div>
+                <div style="float:right"><a href="https://www.facebook.com/" target="new"><img src="~/Content/Client/images/facebook-icon.png" width="30" height="30" /></a></div>
+                <div style="float:right"><a><img src="~/Content/Client/images/gmail-icon.png" width="34" height="34" /></a></div>
+                <div style="float:right"><a href="https://www.youtube.com/" target="new"><img src="~/Content/Client/images/youtube-icon.png" width="32" height="32" /></a></div>
+                <div style="float:right"><a><img src="~/Content/Client/images/twitter-icon.png" width="32" height="32" /></a></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="myModal-gt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Giới Thiệu</h4>
+                </div>
+                <div class="modal-body">
+                    Website Quản lý Hội thao Online
+                </div>
+            </div>
+        </div>
+        </div>
+</body>
+</html>
+<script type='text/javascript'>
+    $(function () {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() != 0) {
+                $('#bttop').fadeIn();
+            } else {
+                $('#bttop').fadeOut();
+            }
+        });
+        $('#bttop').click(function () {
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+        });
+    });
+</script>

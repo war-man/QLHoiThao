@@ -1,0 +1,79 @@
+﻿@model IEnumerable<QLHoiThaoProject.Models.EFModel.TRANDAU>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Quản lý trận đấu
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Danh sách trận đấu</li>
+    </ol>
+</div><!--/.row-->
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active"><h3>Ghi chú</h3></li>
+        <li class="active">Trạng thái = True : Đã thi đấu</li>
+        <li class="active">Trạng thái = False : Chưa thi đấu</li>
+    </ol>
+</div><!--/.row-->
+
+<p>
+    <button class="btn btn-default">@Html.ActionLink("Thêm trận đấu", "TimHT")</button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên sân
+        </th>
+        <th>
+            Tên vòng đấu
+        </th>
+        <th>
+            Thời gian bắt đầu
+        </th>
+        <th>
+            Thời gian kết thúc
+        </th>
+        <th>
+            Ngày thi đấu
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SANTHIDAU.TENSTD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VONGDAU.TENVONGDAU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.THOIGIANBD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.THOIGIANKT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYTHIDAU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TRANGTHAI)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.IDTD }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.IDTD }) |*@
+            @Html.ActionLink("Xóa", "Delete", new { id=item.IDTD })
+        </td>
+    </tr>
+}
+
+</table>

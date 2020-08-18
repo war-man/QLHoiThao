@@ -1,0 +1,45 @@
+﻿@model QLHoiThaoProject.Models.EFModel.SANTHIDAU
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Quản lý Sân thi đấu
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Thông tin sân thi đấu</li>
+    </ol>
+</div><!--/.row-->
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Tên sân thi đấu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENSTD)
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOTA)
+        </dd>
+
+        <dt>
+
+        </dt>
+
+        <dd>
+            <button class="btn">@Html.ActionLink("Sửa", "Edit", new { id = Model.IDSTD })</button>
+            <button class="btn">@Html.ActionLink("Quay lại", "Index")</button>
+        </dd>
+
+    </dl>
+</div>

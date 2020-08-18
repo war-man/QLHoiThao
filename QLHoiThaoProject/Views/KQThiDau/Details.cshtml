@@ -1,0 +1,62 @@
+﻿@model QLHoiThaoProject.Models.EFModel.CTTRANDAU
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Chi tiết trận đấu</li>
+    </ol>
+</div><!--/.row-->
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DOI.TENDOI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOI.TENDOI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TRANDAU.THOIGIANBD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANDAU.THOIGIANBD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KETQUA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KETQUA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TISO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TISO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DIEM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIEM)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

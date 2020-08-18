@@ -1,0 +1,43 @@
+﻿@model List<QLHoiThaoProject.Models.DSThanhVienDoiTheoLop>
+@{
+    ViewBag.Title = "DanhSachThanhVienDoiTheoLop";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Thống kê - Báo cáo
+}
+
+@foreach (var item in ViewBag.DANHSACHTHANHVIENLOP)
+{
+    <div class="row">
+        <ol class="breadcrumb">
+            <li class="active">Danh sách sinh viên đăng ký thi đấu của lớp <strong><font color="red">@item.TENLOP</font></strong></li>
+        </ol>
+    </div><!--/.row-->
+
+    <div class="row">
+        <div class="col-md-1"><strong><font color="blue">STT</font></strong></div>
+        <div class="col-md-2"><strong><font color="blue">Mã số sinh viên</font></strong></div>
+        <div class="col-md-2"><strong><font color="blue">Tên sinh viên</font></strong></div>
+        <div class="col-md-2"><strong><font color="blue">Email sinh viên</font></strong></div>
+    </div>
+                int i = 1;
+                foreach (var a in item.THANHVIENS)
+                {
+    <div class="row">
+        <div class="col-md-1">@i</div>
+        <div class="col-md-2">@a.IDSV</div>
+        <div class="col-md-2">@a.TENVDV</div>
+        <div class="col-md-2">@a.EMAILVDV</div>
+    </div>
+        i++;
+    }
+    <br />
+    }
+
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2"><button class="btn btn-default">@Html.ActionLink("Trở về", "TimHT_ThongKe", "ThongKeBaoCao")</button></div>
+        <div class="col-md-5"></div>
+    </div>

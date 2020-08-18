@@ -1,0 +1,125 @@
+﻿@model QLHoiThaoProject.Models.EFModel.TRANDAU
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Quản lý trận đấu
+}
+
+@*<div class="row">
+    <div class="col-md-2 pull-left">Chọn bảng đấu</div>
+    <div class="col-md-4">@Html.DropDownList("text3", (SelectList)ViewBag.BANGDAU, htmlAttributes: new { @class = "form-control" })</div>
+    <div class="col-md-4 pull-left"><input class="btn btn-default" type="submit" value="Chọn" name="btnFilter" /></div>
+</div>*@
+
+@*<div class="row">    
+    <div class="col-md-2">Giá trị select</div>
+    
+    <div class="col-md-4"><input class="form-control" id="Product" type="text" /></div>
+</div>*@
+
+<hr />
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Thêm trận đấu mới</li>
+    </ol>
+</div><!--/.row-->
+
+@foreach (var bangdau in ViewBag.BANGDAU) {
+    
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="control-label col-md-2">Tên vòng đấu</div>
+            <div class="col-md-10">
+                @Html.Hidden("idvongdau",ViewData["IDVONGDAU"])
+                @Html.TextBox("tenvongdau",ViewData["TENVONGDAU"], htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+                @*@Html.DropDownList("IDVONGDAU", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDVONGDAU, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="control-label col-md-2" style="margin-left:10px;">Đội thi đấu</div>
+                <div class="col-md-4">
+                    @Html.DropDownList("text1", (SelectList)ViewBag.DOI, htmlAttributes: new { @class = "form-control" })                
+                </div>
+                <div class="col-md-1"> thi đấu với </div>
+                <div class="col-md-4">
+                    @Html.DropDownList("text2", (SelectList)ViewBag.DOI, htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Tên trọng tài</div>
+            <div class="col-md-10">
+                @Html.DropDownList("IDTRONGTAI", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDTRONGTAI, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Sân thi đấu</div>
+            <div class="col-md-10">
+                @Html.DropDownList("IDSTD", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDSTD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Thời gian bắt đầu</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.THOIGIANBD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.THOIGIANBD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Thời gian kết thúc</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.THOIGIANKT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.THOIGIANKT, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Ngày thi đấu</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NGAYTHIDAU, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NGAYTHIDAU, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.TRANGTHAI, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="control-label col-md-2">Trạng thái</div>
+            <div class="col-md-10">
+                <div class="checkbox">
+                    <input type="text" value="False" class="form-control" disabled/>
+                    @*@Html.EditorFor(model => model.TRANGTHAI, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.ValidationMessageFor(model => model.TRANGTHAI, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @Html.ActionLink("Quay lại", "Index")
+                    <input type="submit" value="Tạo trận" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+}
+

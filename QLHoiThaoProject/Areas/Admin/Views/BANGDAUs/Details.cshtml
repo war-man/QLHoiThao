@@ -1,0 +1,41 @@
+﻿@model QLHoiThaoProject.Models.EFModel.BANGDAU
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Quản lý Bảng đấu
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Thông tin bảng đấu</li>
+    </ol>
+</div><!--/.row-->
+
+<div>
+
+    <div>
+
+        <dl class="dl-horizontal">
+            <dt>
+                Tên bảng
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TENBANG)
+            </dd>
+
+            <dt>
+
+            </dt>
+
+            <dd>
+                <button class="btn">@Html.ActionLink("Sửa", "Edit", new { id = Model.IDBANG })</button>
+                <button class="btn">@Html.ActionLink("Quay lại", "Index")</button>
+            </dd>
+
+        </dl>
+    </div>
+</div>

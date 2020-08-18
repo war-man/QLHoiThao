@@ -1,0 +1,88 @@
+﻿@model IEnumerable<QLHoiThaoProject.Models.EFModel.DOI>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Quản lý đội thi đấu
+}
+
+
+
+<p>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-md-2 pull-left">Môn thi đấu:</div>
+            <div class="col-md-4">@Html.DropDownList("text1", (SelectList)ViewBag.IDMTD, htmlAttributes: new { @class = "form-control" })</div>
+            <div class="col-md-4 pull-left"><input type="submit" value="Tìm" class="btn btn-default" /></div>
+        </div>
+        
+    }
+    
+</p>
+<div style="clear:both"></div>
+<hr />
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Danh sách đội đăng ký thi đấu</li>
+    </ol>
+</div><!--/.row-->
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            Tên hội thao
+        </th>
+        <th>
+            Tên môn thi đấu
+        </th>
+        <th>
+            Tên bảng đấu
+        </th>
+        <th>
+            Tên lớp
+        </th>        
+        <th>
+            Bị loại?
+        </th>
+        <th>
+            Tên đội
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HOITHAO.TENHT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MONTHIDAU.TENMTD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BANGDAU.TENBANG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LOP.TENLOP)
+        </td>                        
+        <td>
+            @Html.DisplayFor(modelItem => item.BILOAI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENDOI)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.IDDOI }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.IDDOI }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.IDDOI })  |
+            @Html.ActionLink("Thêm thành viên đội", "ThaoTacTV", new { id = item.IDDOI, idlop= item.IDLOP })
+        </td>
+    </tr>
+}
+
+</table>

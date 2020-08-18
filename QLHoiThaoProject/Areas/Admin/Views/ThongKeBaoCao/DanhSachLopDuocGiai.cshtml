@@ -1,0 +1,43 @@
+﻿@model List<QLHoiThaoProject.Models.DSGiaiTheoLop>
+    @{
+        ViewBag.Title = "DanhSachLopDuocGiai";
+        Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    }
+
+    @section IndexAdmin{
+        Thống kê - Báo cáo
+    }
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Danh sách lớp được giải</li>
+    </ol>
+</div><!--/.row-->
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên lớp</th>
+            <th>Số giải</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 1;
+            foreach (var item in ViewBag.DANHSACHLOP)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@item.TENLOP</td>
+                    <td>@item.SOGIAI</td>
+                </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>
+
+<div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-2"><button class="btn btn-default">@Html.ActionLink("Trở về", "TimHT_ThongKe", "ThongKeBaoCao")</button></div>
+    <div class="col-md-5"></div>
+</div>

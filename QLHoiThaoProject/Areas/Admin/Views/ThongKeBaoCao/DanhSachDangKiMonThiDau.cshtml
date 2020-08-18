@@ -1,0 +1,43 @@
+﻿@model List<QLHoiThaoProject.Models.DSDangKiTheoMTD>
+@{
+    ViewBag.Title = "DanhSachDangKyMonThiDau";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Thống kê - Báo cáo
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Danh sách môn thi đấu được đăng ký nhiều</li>
+    </ol>
+</div><!--/.row-->
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên môn thi đấu</th>
+            <th>Số đội đăng ký</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 1;
+            foreach (var item in ViewBag.DANHSACHDANGKIMON) {
+            <tr>
+                <td>@i</td>
+                <td>@item.MON</td>
+                <td>@item.SOLUONG</td>
+            </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>
+
+
+<div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-2"><button class="btn btn-default">@Html.ActionLink("Trở về", "TimHT_ThongKe", "ThongKeBaoCao")</button></div>
+    <div class="col-md-5"></div>
+</div>

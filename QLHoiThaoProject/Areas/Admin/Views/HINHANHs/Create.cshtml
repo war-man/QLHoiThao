@@ -1,0 +1,56 @@
+﻿@model QLHoiThaoProject.Models.EFModel.HINHANH
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Quản lý Hình ảnh
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Thêm hình ảnh</li>
+    </ol>
+</div><!--/.row-->
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+    
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="control-label col-md-2">Trận đấu</div>
+            <div class="col-md-10">
+                @Html.DropDownList("IDTD", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDTD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Tên hình ảnh</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TENHA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TENHA, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Link</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LINK, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LINK, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button class="btn">@Html.ActionLink("Quay lại", "Index")</button>
+                <input type="submit" value="Thêm" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+

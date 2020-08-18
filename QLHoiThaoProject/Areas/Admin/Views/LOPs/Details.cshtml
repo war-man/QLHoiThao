@@ -1,0 +1,51 @@
+﻿@model QLHoiThaoProject.Models.EFModel.LOP
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Quản lý Lớp
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Thông tin lớp</li>
+    </ol>
+</div><!--/.row-->
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Mã lớp
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDLOP)
+        </dd>
+        <dt>
+            Tên lớp
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENLOP)
+        </dd>
+        <dt>
+            Tên ngành
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGANH.TENNGANH)
+        </dd>
+
+        <dt>
+            
+        </dt>
+
+        <dd>
+            <button class="btn">@Html.ActionLink("Sửa", "Edit", new { id = Model.IDLOP })</button>
+            <button class="btn">@Html.ActionLink("Quay lại", "Index")</button>
+        </dd>
+
+    </dl>
+</div>

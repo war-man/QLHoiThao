@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "LichTranDau";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid f">
+    <div class="container f">
+        <div class="panel panel-primary">
+            <div class="row">
+                <div class="col-md-9">
+                    <div id="bookbody" style="width:1106px;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">LỊCH THI ĐẤU</div>
+                                    <div class="panel-body" style="padding-bottom: 0px;">
+                                        <div class="row">
+                                            <div class="row" style="width:1137px; margin-left:1px;">
+                                                <ol class="breadcrumb">
+                                                    <li class="active">Danh sách trận đấu</li>
+                                                </ol>
+                                            </div><!--/.row-->
+
+                                            <div class="row" style="width:1137px; margin-left:1px;">
+                                                <ol class="breadcrumb">
+                                                    <li class="active"><h3>Ghi chú</h3></li>
+                                                    <li class="active">Trạng thái = True : Đã thi đấu</li>
+                                                    <li class="active">Trạng thái = False : Chưa thi đấu</li>
+                                                </ol>
+                                            </div><!--/.row-->
+
+                                            <div>
+                                                <table class="table table-hover" style="width:1137px; margin-left:1px;">
+                                                    <tr>
+                                                        <th>
+                                                            Môn thi đấu
+                                                        </th>
+                                                        <th>
+                                                            Vòng đấu
+                                                        </th>
+                                                        <th>
+                                                            Tên bảng đấu
+                                                        </th>
+                                                        <th>
+                                                            Ngày thi đấu
+                                                        </th>
+                                                        <th>
+                                                            Thời gian
+                                                        </th>
+                                                        <th>
+                                                            Sân thi đấu
+                                                        </th>
+                                                        <th>
+                                                            Đội thi đấu
+                                                        </th>
+                                                        <th>
+                                                            Trọng tài chính
+                                                        </th>
+                                                        <th>
+                                                            Trạng thái
+                                                        </th>
+                                                    </tr>
+                                                    @for (var i = 0; i < ViewBag.Total; i++)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @ViewBag.LICHDAU[i].DOI.MONTHIDAU.TENMTD
+                                                            </td>
+                                                            <td>
+                                                                @ViewBag.TRANDAU[i].VONGDAU.TENVONGDAU
+                                                            </td>
+
+                                                            <td>
+                                                                @ViewBag.LICHDAU[i].DOI.BANGDAU.TENBANG
+                                                            </td>
+                                                            <td>
+                                                                @ViewBag.TRANDAU[i].NGAYTHIDAU
+                                                            </td>
+                                                            <td>@ViewBag.TRANDAU[i].THOIGIANBD - @ViewBag.TRANDAU[i].THOIGIANKT</td>
+                                                            <td>
+                                                                @ViewBag.TRANDAU[i].SANTHIDAU.TENSTD
+                                                            </td>
+                                                            <td>
+                                                                @ViewBag.LICHDAU[i].DOI.TENDOI - @ViewBag.LICHDAU[i + 1].DOI.TENDOI
+                                                            </td>
+                                                            <td>
+                                                                @ViewBag.TRANDAU[i].TRONGTAI.TENTRONGTAI
+                                                            </td>
+                                                            <td>
+                                                                @ViewBag.TRANDAU[i].TRANGTHAI
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </table>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-5"></div>
+                                                <div class="col-md-2"><button class="btn">@Html.ActionLink("Quay lại", "TimHT_TranDau", "TRANDAUs")</button></div>
+                                                <div class="col-md-5"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

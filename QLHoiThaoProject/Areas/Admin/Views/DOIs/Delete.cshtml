@@ -1,0 +1,80 @@
+﻿@model QLHoiThaoProject.Models.EFModel.DOI
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Quản lý đội thi đấu
+}
+
+<div class="row">
+<ol class="breadcrumb">
+    <li class="active">Xóa đội đăng ký thi đấu</li>
+</ol>
+</div><!--/.row-->
+
+<h3>Bạn có chắc chắn muốn xóa?</h3>
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Tên bảng đấu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BANGDAU.TENBANG)
+        </dd>
+
+        <dt>
+            Tên hội thao
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOITHAO.TENHT)
+        </dd>
+
+        <dt>
+            Tên lớp
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOP.TENLOP)
+        </dd>
+
+        <dt>
+            Tên môn thi đấu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MONTHIDAU.TENMTD)
+        </dd>
+
+        <dt>
+            Bị loại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BILOAI)
+        </dd>
+
+        <dt>
+            Tên đội
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENDOI)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Hủy", "Index")
+        </div>
+    }
+</div>

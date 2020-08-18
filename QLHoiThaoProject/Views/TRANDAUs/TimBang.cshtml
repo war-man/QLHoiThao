@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "TimBang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<table>
+    <tr>
+        <td>ID BANG</td>
+        <td>ID MTD</td>
+        <td></td>
+    </tr>
+    @foreach (var item in ViewBag.IDBANG)
+    {
+        <tr>
+            <td>@item.IDBANG</td>
+            <td>@item.IDMTD</td>
+            <td>@Html.ActionLink("CREATE", "Create", new { id = item.IDBANG, idMTD = item.IDMTD})</td>
+        </tr>
+    }
+</table>
+
+

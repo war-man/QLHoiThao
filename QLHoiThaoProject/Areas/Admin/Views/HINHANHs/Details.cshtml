@@ -1,0 +1,53 @@
+﻿@model QLHoiThaoProject.Models.EFModel.HINHANH
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexAdmin{
+    Quản lý Hình ảnh
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="active">Chi tiết hình ảnh</li>
+    </ol>
+</div><!--/.row-->
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Trận đấu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANDAU.IDTD)
+        </dd>
+
+        <dt>
+            Tên hình ảnh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENHA)
+        </dd>
+
+        <dt>
+            Link
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LINK)
+        </dd>
+
+        <dt>
+
+        </dt>
+
+        <dd>
+            <button class="btn">@Html.ActionLink("Sửa", "Edit", new { id = Model.IDHA })</button>
+            <button class="btn">@Html.ActionLink("Quay lại", "Index")</button>
+        </dd>
+
+    </dl>
+</div>
+
